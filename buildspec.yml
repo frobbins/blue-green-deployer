@@ -1,0 +1,17 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      nodejs: 14
+    commands:
+      - npm install -g serverless
+
+  build:
+    commands:
+      - npm install
+      - npm run build
+
+  post_build:
+    commands:
+      - serverless deploy --stage <stage_name> --region <region>
